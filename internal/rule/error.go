@@ -10,30 +10,10 @@ type Error struct {
 	*sync.RWMutex
 }
 
-func (err *Error) GetPath() string {
-	err.RLock()
-	defer err.RUnlock()
+func (err *Error) GetPath() string { _ = "STUB: not implemented"; return "" }
 
-	return err.Path
-}
+func (err *Error) IsDir() bool { _ = "STUB: not implemented"; return false }
 
-func (err *Error) IsDir() bool {
-	err.RLock()
-	defer err.RUnlock()
+func (err *Error) GetExt() string { _ = "STUB: not implemented"; return "" }
 
-	return err.Dir
-}
-
-func (err *Error) GetExt() string {
-	err.RLock()
-	defer err.RUnlock()
-
-	return err.Ext
-}
-
-func (err *Error) GetRules() []Rule {
-	err.RLock()
-	defer err.RUnlock()
-
-	return err.Rules
-}
+func (err *Error) GetRules() []Rule { _ = "STUB: not implemented"; return nil }

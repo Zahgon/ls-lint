@@ -2,7 +2,6 @@ package rule
 
 import (
 	"sync"
-	"unicode"
 )
 
 type SnakeCase struct {
@@ -11,60 +10,25 @@ type SnakeCase struct {
 	*sync.RWMutex
 }
 
-func (rule *SnakeCase) Init() Rule {
-	rule.name = "snakecase"
-	rule.exclusive = false
-	rule.RWMutex = new(sync.RWMutex)
+func (rule *SnakeCase) Init() Rule { _ = "STUB: not implemented"; return *new(Rule) }
 
-	return rule
-}
+func (rule *SnakeCase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *SnakeCase) GetName() string {
-	rule.RLock()
-	defer rule.RUnlock()
+func (rule *SnakeCase) SetParameters(params []string) error { _ = "STUB: not implemented"; return nil }
 
-	return rule.name
-}
+func (rule *SnakeCase) GetParameters() []string { _ = "STUB: not implemented"; return nil }
 
-func (rule *SnakeCase) SetParameters(params []string) error {
-	return nil
-}
-
-func (rule *SnakeCase) GetParameters() []string {
-	return nil
-}
-
-func (rule *SnakeCase) GetExclusive() bool {
-	rule.RLock()
-	defer rule.RUnlock()
-
-	return rule.exclusive
-}
+func (rule *SnakeCase) GetExclusive() bool { _ = "STUB: not implemented"; return false }
 
 // Validate checks if string is sneak case
 // false if rune is no lowercase letter, digit or _
 func (rule *SnakeCase) Validate(value string, _ string, _ bool) (bool, error) {
-	for _, c := range value {
-		if c == 95 || unicode.IsDigit(c) { // 95 => _
-			continue
-		}
-
-		if !unicode.IsLetter(c) {
-			return false, nil
-		}
-
-		if !unicode.IsLower(c) {
-			return false, nil
-		}
-	}
-
-	return true, nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (rule *SnakeCase) GetErrorMessage() string {
-	return rule.GetName()
-}
+// 95 => _
 
-func (rule *SnakeCase) Copy() Rule {
-	return rule
-}
+func (rule *SnakeCase) GetErrorMessage() string { _ = "STUB: not implemented"; return "" }
+
+func (rule *SnakeCase) Copy() Rule { _ = "STUB: not implemented"; return *new(Rule) }

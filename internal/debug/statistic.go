@@ -14,37 +14,12 @@ type Statistic struct {
 	*sync.RWMutex
 }
 
-func NewStatistic() *Statistic {
-	return &Statistic{
-		Start:   time.Now(),
-		RWMutex: new(sync.RWMutex),
-	}
-}
+func NewStatistic() *Statistic { _ = "STUB: not implemented"; return nil }
 
-func (statistic *Statistic) AddFile() {
-	statistic.Lock()
-	defer statistic.Unlock()
+func (statistic *Statistic) AddFile() { _ = "STUB: not implemented"; return }
 
-	statistic.Files++
-}
+func (statistic *Statistic) AddFileSkip() { _ = "STUB: not implemented"; return }
 
-func (statistic *Statistic) AddFileSkip() {
-	statistic.Lock()
-	defer statistic.Unlock()
+func (statistic *Statistic) AddDir() { _ = "STUB: not implemented"; return }
 
-	statistic.FileSkips++
-}
-
-func (statistic *Statistic) AddDir() {
-	statistic.Lock()
-	defer statistic.Unlock()
-
-	statistic.Dirs++
-}
-
-func (statistic *Statistic) AddDirSkip() {
-	statistic.Lock()
-	defer statistic.Unlock()
-
-	statistic.DirSkips++
-}
+func (statistic *Statistic) AddDirSkip() { _ = "STUB: not implemented"; return }

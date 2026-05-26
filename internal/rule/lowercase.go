@@ -2,7 +2,6 @@ package rule
 
 import (
 	"sync"
-	"unicode"
 )
 
 type Lowercase struct {
@@ -11,51 +10,22 @@ type Lowercase struct {
 	*sync.RWMutex
 }
 
-func (rule *Lowercase) Init() Rule {
-	rule.name = "lowercase"
-	rule.exclusive = false
-	rule.RWMutex = new(sync.RWMutex)
+func (rule *Lowercase) Init() Rule { _ = "STUB: not implemented"; return *new(Rule) }
 
-	return rule
-}
+func (rule *Lowercase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *Lowercase) GetName() string {
-	rule.RLock()
-	defer rule.RUnlock()
+func (rule *Lowercase) SetParameters(params []string) error { _ = "STUB: not implemented"; return nil }
 
-	return rule.name
-}
+func (rule *Lowercase) GetParameters() []string { _ = "STUB: not implemented"; return nil }
 
-func (rule *Lowercase) SetParameters(params []string) error {
-	return nil
-}
-
-func (rule *Lowercase) GetParameters() []string {
-	return nil
-}
-
-func (rule *Lowercase) GetExclusive() bool {
-	rule.RLock()
-	defer rule.RUnlock()
-
-	return rule.exclusive
-}
+func (rule *Lowercase) GetExclusive() bool { _ = "STUB: not implemented"; return false }
 
 // Validate checks if every letter is lower
 func (rule *Lowercase) Validate(value string, _ string, _ bool) (bool, error) {
-	for _, c := range value {
-		if unicode.IsLetter(c) && !unicode.IsLower(c) {
-			return false, nil
-		}
-	}
-
-	return true, nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (rule *Lowercase) GetErrorMessage() string {
-	return rule.GetName()
-}
+func (rule *Lowercase) GetErrorMessage() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *Lowercase) Copy() Rule {
-	return rule
-}
+func (rule *Lowercase) Copy() Rule { _ = "STUB: not implemented"; return *new(Rule) }

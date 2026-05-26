@@ -2,7 +2,6 @@ package rule
 
 import (
 	"sync"
-	"unicode"
 )
 
 type PascalCase struct {
@@ -11,80 +10,35 @@ type PascalCase struct {
 	*sync.RWMutex
 }
 
-func (rule *PascalCase) Init() Rule {
-	rule.name = "pascalcase"
-	rule.exclusive = false
-	rule.RWMutex = new(sync.RWMutex)
+func (rule *PascalCase) Init() Rule { _ = "STUB: not implemented"; return *new(Rule) }
 
-	return rule
-}
+func (rule *PascalCase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *PascalCase) GetName() string {
-	rule.RLock()
-	defer rule.RUnlock()
+func (rule *PascalCase) SetParameters(params []string) error { _ = "STUB: not implemented"; return nil }
 
-	return rule.name
-}
+func (rule *PascalCase) GetParameters() []string { _ = "STUB: not implemented"; return nil }
 
-func (rule *PascalCase) SetParameters(params []string) error {
-	return nil
-}
-
-func (rule *PascalCase) GetParameters() []string {
-	return nil
-}
-
-func (rule *PascalCase) GetExclusive() bool {
-	rule.RLock()
-	defer rule.RUnlock()
-
-	return rule.exclusive
-}
+func (rule *PascalCase) GetExclusive() bool { _ = "STUB: not implemented"; return false }
 
 // Validate checks if string is pascal case
 // false if rune is no letter and no digit
 // false if first rune is not upper
 func (rule *PascalCase) Validate(value string, _ string, _ bool) (bool, error) {
-	for i, c := range value {
+	_ = "STUB: not implemented"
+	return false,
+
 		// must be letter or digit
-		if !unicode.IsLetter(c) && !unicode.IsDigit(c) {
-			return false, nil
-		}
-
-		// first rune must be upper
-		if i == 0 && unicode.IsLower(c) {
-			return false, nil
-		}
-
-		if unicode.IsUpper(c) {
-			if i == 0 {
-				continue
-			}
-
-			// rune -1 can be digit
-			if unicode.IsDigit(rune(value[i-1])) {
-				continue
-			}
-
-			// allow cases like SsrVFor.ts
-			if i >= 2 && unicode.IsUpper(rune(value[i-1])) && unicode.IsLower(rune(value[i-2])) {
-				continue
-			}
-
-			// rune -1 must be lower
-			if !unicode.IsLower(rune(value[i-1])) {
-				return false, nil
-			}
-		}
-	}
-
-	return true, nil
+		nil
 }
 
-func (rule *PascalCase) GetErrorMessage() string {
-	return rule.GetName()
-}
+// first rune must be upper
 
-func (rule *PascalCase) Copy() Rule {
-	return rule
-}
+// rune -1 can be digit
+
+// allow cases like SsrVFor.ts
+
+// rune -1 must be lower
+
+func (rule *PascalCase) GetErrorMessage() string { _ = "STUB: not implemented"; return "" }
+
+func (rule *PascalCase) Copy() Rule { _ = "STUB: not implemented"; return *new(Rule) }

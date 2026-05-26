@@ -2,7 +2,6 @@ package rule
 
 import (
 	"sync"
-	"unicode"
 )
 
 type CamelCase struct {
@@ -11,75 +10,34 @@ type CamelCase struct {
 	*sync.RWMutex
 }
 
-func (rule *CamelCase) Init() Rule {
-	rule.name = "camelcase"
-	rule.exclusive = false
-	rule.RWMutex = new(sync.RWMutex)
+func (rule *CamelCase) Init() Rule { _ = "STUB: not implemented"; return *new(Rule) }
 
-	return rule
-}
+func (rule *CamelCase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *CamelCase) GetName() string {
-	rule.RLock()
-	defer rule.RUnlock()
+func (rule *CamelCase) SetParameters(params []string) error { _ = "STUB: not implemented"; return nil }
 
-	return rule.name
-}
+func (rule *CamelCase) GetParameters() []string { _ = "STUB: not implemented"; return nil }
 
-func (rule *CamelCase) SetParameters(params []string) error {
-	return nil
-}
-
-func (rule *CamelCase) GetParameters() []string {
-	return nil
-}
-
-func (rule *CamelCase) GetExclusive() bool {
-	rule.RLock()
-	defer rule.RUnlock()
-
-	return rule.exclusive
-}
+func (rule *CamelCase) GetExclusive() bool { _ = "STUB: not implemented"; return false }
 
 // Validate checks if string is camel case
 // false if rune is no letter and no digit
 func (rule *CamelCase) Validate(value string, _ string, _ bool) (bool, error) {
-	for i, c := range value {
+	_ = "STUB: not implemented"
+	return false,
+
 		// must be letter or digit
-		if !unicode.IsLetter(c) && !unicode.IsDigit(c) {
-			return false, nil
-		}
-
-		if unicode.IsUpper(c) {
-			// first rune cannot be upper
-			if i == 0 {
-				return false, nil
-			}
-
-			// rune -1 can be digit
-			if unicode.IsDigit(rune(value[i-1])) {
-				continue
-			}
-
-			// allow cases like ssrVFor.ts
-			if i >= 2 && unicode.IsUpper(rune(value[i-1])) && unicode.IsLower(rune(value[i-2])) {
-				continue
-			}
-
-			// rune -1 must be lower
-			if !unicode.IsLower(rune(value[i-1])) {
-				return false, nil
-			}
-		}
-	}
-
-	return true, nil
+		nil
 }
 
-func (rule *CamelCase) GetErrorMessage() string {
-	return rule.GetName()
-}
+// first rune cannot be upper
 
-func (rule *CamelCase) Copy() Rule {
-	return rule
-}
+// rune -1 can be digit
+
+// allow cases like ssrVFor.ts
+
+// rune -1 must be lower
+
+func (rule *CamelCase) GetErrorMessage() string { _ = "STUB: not implemented"; return "" }
+
+func (rule *CamelCase) Copy() Rule { _ = "STUB: not implemented"; return *new(Rule) }

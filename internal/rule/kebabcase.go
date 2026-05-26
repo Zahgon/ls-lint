@@ -2,7 +2,6 @@ package rule
 
 import (
 	"sync"
-	"unicode"
 )
 
 type KebabCase struct {
@@ -11,60 +10,25 @@ type KebabCase struct {
 	*sync.RWMutex
 }
 
-func (rule *KebabCase) Init() Rule {
-	rule.name = "kebabcase"
-	rule.exclusive = false
-	rule.RWMutex = new(sync.RWMutex)
+func (rule *KebabCase) Init() Rule { _ = "STUB: not implemented"; return *new(Rule) }
 
-	return rule
-}
+func (rule *KebabCase) GetName() string { _ = "STUB: not implemented"; return "" }
 
-func (rule *KebabCase) GetName() string {
-	rule.RLock()
-	defer rule.RUnlock()
+func (rule *KebabCase) SetParameters(params []string) error { _ = "STUB: not implemented"; return nil }
 
-	return rule.name
-}
+func (rule *KebabCase) GetParameters() []string { _ = "STUB: not implemented"; return nil }
 
-func (rule *KebabCase) SetParameters(params []string) error {
-	return nil
-}
-
-func (rule *KebabCase) GetParameters() []string {
-	return nil
-}
-
-func (rule *KebabCase) GetExclusive() bool {
-	rule.RLock()
-	defer rule.RUnlock()
-
-	return rule.exclusive
-}
+func (rule *KebabCase) GetExclusive() bool { _ = "STUB: not implemented"; return false }
 
 // Validate checks if string is kebab case
 // false if rune is no lowercase letter, digit or -
 func (rule *KebabCase) Validate(value string, _ string, _ bool) (bool, error) {
-	for _, c := range value {
-		if c == 45 || unicode.IsDigit(c) { // 45 => -
-			continue
-		}
-
-		if !unicode.IsLetter(c) {
-			return false, nil
-		}
-
-		if !unicode.IsLower(c) {
-			return false, nil
-		}
-	}
-
-	return true, nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (rule *KebabCase) GetErrorMessage() string {
-	return rule.GetName()
-}
+// 45 => -
 
-func (rule *KebabCase) Copy() Rule {
-	return rule
-}
+func (rule *KebabCase) GetErrorMessage() string { _ = "STUB: not implemented"; return "" }
+
+func (rule *KebabCase) Copy() Rule { _ = "STUB: not implemented"; return *new(Rule) }
